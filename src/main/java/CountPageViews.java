@@ -8,11 +8,18 @@ import java.io.IOException;
 public class CountPageViews extends HttpServlet {
     private Integer counter = 0;
     protected void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        int internalCount;
-        synchronized (counter) {
-            counter++;
-            internalCount = counter;
-        }
-        res.getWriter().write("total page views: " + internalCount);
+//        int internalCount;
+//        String searchQuery = req.getParameter("q");
+//        synchronized (counter) {
+//            counter++;
+//            internalCount = counter;
+//            if(searchQuery != null) {
+//                internalCount = 1;
+//            }
+//        }
+//
+//        res.getWriter().write("total page views: " + internalCount);
+        counter++;
+        res.getWriter().println("count: " + counter);
     }
 }
