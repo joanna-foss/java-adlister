@@ -8,7 +8,6 @@ import java.io.IOException;
 public class CountPageViews extends HttpServlet {
     private Integer counter = 0;
     protected void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        getServletContext().log("service() called");
         int internalCount;
         synchronized (counter) {
             counter++;
