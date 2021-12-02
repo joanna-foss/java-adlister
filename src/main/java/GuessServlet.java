@@ -11,7 +11,15 @@ public class GuessServlet extends HttpServlet {
         req.getRequestDispatcher("/guess.jsp").forward(req, res);
     }
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse res){
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        int random = (int) Math.ceil(Math.random()*3);
+        int guess = Integer.parseInt(req.getParameter("guess"));
+        if(random == guess){
+            res.sendRedirect("/correct");
+        } else if (guess != 1 && guess != 2 && guess != 3){
+            res.sendRedirect("/guess");
+        } else {
+            res.sendRedirect("/incorrect");
+        }
     }
 }
