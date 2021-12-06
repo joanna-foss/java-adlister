@@ -9,13 +9,10 @@ import java.io.IOException;
 @WebServlet(name = "ViewProfileServlet", urlPatterns = "/profile")
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession current = request.getSession();
-        if(!(boolean) current.getAttribute("user")) {
-            response.sendRedirect("/WEB-INF/login.jsp");
-//        } else if ((boolean) current.getAttribute("user")) {
-//            request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
-        } else {
+        if(request.getSession().getAttribute("user") != null) {
             request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         }
     }
 }
