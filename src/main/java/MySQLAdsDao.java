@@ -39,15 +39,16 @@ public class MySQLAdsDao implements Ads{
         return adsList;
     }
 
-//    @Override
-//    public Long insert(Ad ad) {
-//        return null;
-//    }
+    @Override
+    public Long insert(Ad ad) {
+        return null;
+    }
+
 public static void main(String[] args) throws SQLException {
     MySQLAdsDao mySQLAdsDao = new MySQLAdsDao();
 
     List<Ad> ads = mySQLAdsDao.all();
-    for(Ad ad : ads){
+    for (Ad ad : ads) {
         System.out.println(ad.getUserId() + " " + ad.getTitle() + " " + ad.getDescription());
     }
 }
